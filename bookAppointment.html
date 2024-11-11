@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: rgb(240, 241, 244);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            color: white;
+            padding: 32px 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-heading {
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-list {
+            list-style: none;
+            color: #9ca3af;
+        }
+
+        .footer-list li {
+            margin-bottom: 8px;
+        }
+
+        .footer-list a {
+            color: #9ca3af;
+            text-decoration: none;
+        }
+        .footer-list a:hover{
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .submit-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 600px) {
+            .contact-form {
+                padding: 15px;
+                width: 80%;
+            }
+
+            .checkbox-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .form-input, 
+            .form-textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media screen and (max-width: 320px) {
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+     
+    <div class="contact-form">
+
+        <form action="https://api.web3forms.com/submit" method="POST" id="medical-form">
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="8065706b-7c08-442d-a599-7f2ac5c3f4c0">
+            
+            <!-- Name Field -->
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-input" name="name" required>
+            </div>
+            
+            <!-- Phone Field -->
+            <div class="form-group">
+                <label class="form-label">Phone</label>
+                <input type="tel" class="form-input" name="phone" required>
+            </div>
+            
+            <!-- Email Field (required for Web3Forms) -->
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" name="email" required>
+            </div>
+            
+            <!-- Pain Types -->
+            <div class="form-group">
+                <label class="form-label">What type of pain are you experiencing?</label>
+                <div class="checkbox-grid">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="backPain" name="pain_types[]" value="Back Pain" class="checkbox-input">
+                        <label for="backPain">Back Pain</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="neckPain" name="pain_types[]" value="Neck Pain" class="checkbox-input">
+                        <label for="neckPain">Neck Pain</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="jointPain" name="pain_types[]" value="Joint Pain" class="checkbox-input">
+                        <label for="jointPain">Joint Pain</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="shoulderPain" name="pain_types[]" value="Shoulder Pain" class="checkbox-input">
+                        <label for="shoulderPain">Shoulder Pain</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="sportsInjury" name="pain_types[]" value="Sports Injury" class="checkbox-input">
+                        <label for="sportsInjury">Sports Injury</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="musclePain" name="pain_types[]" value="Muscle Pain" class="checkbox-input">
+                        <label for="musclePain">Muscle Pain</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="arthritis" name="pain_types[]" value="Arthritis" class="checkbox-input">
+                        <label for="arthritis">Arthritis</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="other" name="pain_types[]" value="Other" class="checkbox-input">
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Condition Description -->
+            <div class="form-group">
+                <label class="form-label">Please describe your condition</label>
+                <textarea class="form-textarea" name="condition_description" rows="4" placeholder="Please provide details about your pain, its duration, and any specific concerns..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
+    </div>
+
+     <!-- Footer -->
+     <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <h4 class="footer-heading">Dr. Sumit Bhardwaj (PT)</h4>
+                    <p class="footer-text">Professional Physiotherapy Services</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="dr.html">Home</a></li>
+                        <li><a href="dr.html#specialities">Services</a></li>
+                        <li><a href="dr.html#specialities">Specialities</a></li>
+                        <li><a href="bookAppointment.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Specialised In</h4>
+                    <ul class="footer-list">
+                        <li>Arthritis Pain</li>
+                        <li>Cervical Spondylosis</li>
+                        <li>Lower Back Pain</li>
+                        <li>Neuro Rehabilitation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dr. Sumit Bhardwaj. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.getElementById('medical-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Gather all checked pain types
+            const painTypes = Array.from(document.querySelectorAll('input[name="pain_types[]"]:checked'))
+                .map(checkbox => checkbox.value);
+            
+            // Create FormData object
+            const formData = new FormData(e.target);
+            
+            // Add pain types as a comma-separated string
+            formData.set('pain_types', painTypes.join(', '));
+            
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('Thank you for your submission. We will contact you shortly.');
+                    e.target.reset();
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

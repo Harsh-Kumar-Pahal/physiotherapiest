@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sumit Bhardwaj - Physiotherapy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 50;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            color: #2563eb;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .menu-button {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 96px;
+            padding-bottom: 48px;
+            background-color: #f3f4f6;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 24px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-right: 8px;
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Specialities Section */
+        .specialities {
+            padding: 64px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 48px;
+        }
+
+        .specialities-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: #f9fafb;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        /* .service-card:hover {
+            transform: translateY(-5px);
+        } */
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .service-list {
+            list-style-position: inside;
+            color: #4b5563;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 64px 0;
+            background: #f3f4f6;
+        }
+
+        .contact-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .contact-info {
+            height: 365px;
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .contact-heading {
+            font-size: 1.25rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .contact-text {
+            color: #4b5563;
+            margin-bottom: 16px;
+        }
+
+        .contact-form {
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .submit-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            color: white;
+            padding: 32px 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-heading {
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-list {
+            list-style: none;
+            color: #9ca3af;
+        }
+
+        .footer-list li {
+            margin-bottom: 8px;
+        }
+
+        .footer-list a {
+            color: #9ca3af;
+            text-decoration: none;
+        }
+
+        .footer-list a:hover{
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        .reviews-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  .review-card {
+    background: white;
+    
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+
+  .review-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  p{
+    font-weight: bold;
+    transition: 0.3s;
+    border-radius: 12px;
+    padding: 10px;
+  }
+
+  p:hover{
+    background-color: #1F2937;
+    color: white;
+    transition: 0.3s;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #4F46E5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+
+  .reviewer-info {
+    flex-grow: 1;
+  }
+
+  .reviewer-name {
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 0.25rem;
+  }
+
+  .review-date {
+    color: #6B7280;
+    font-size: 0.875rem;
+  }
+
+  .review-text {
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .review-actions {
+    display: flex;
+    gap: 1rem;
+    color: #6B7280;
+    font-size: 0.875rem;
+  }
+
+  .action-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .action-button:hover {
+    background-color: #F3F4F6;
+  }
+
+  .reviews-count {
+    color: #6B7280;
+    font-size: 0.875rem;
+  }
+
+  img{
+    border-radius: 12px;
+    transition: 1s;
+  }
+  img:hover{
+    cursor: pointer;
+    scale: 1.05;
+    transition: 1s;
+  }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .hero-container {
+                flex-direction: column;
+            }
+
+            .specialities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="/api/placeholder/50/50" alt="Logo" class="logo-img">
+                <span class="logo-text">PHYSIOTHERAPY</span>
+            </div>
+            <div class="nav-links">
+                <a href="dr.html">Home</a>
+                <a href="lowerBackPain.html">Services</a>
+                <a href="dr.html#specialities">Specialities</a>
+                <a href="bookAppointment.html">Contact</a>
+            </div>
+            <button class="menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Dr. Sumit Bhardwaj (PT)</h1>
+                <p class="hero-subtitle">Expert Physiotherapist - Home Visits Available</p>
+                <div class="rating">
+                    <div class="stars">★★★★★</div>
+                    <span>5.0 (Based on patient reviews)</span>
+                </div>
+                <a href="bookAppointment.html" class="submit-button">Book Appointment</a>
+            </div>
+            <div class="hero-image">
+                <img src="main.webp" alt="Physiotherapy Treatment">
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialities Section -->
+    <section id="specialities" class="specialities">
+        <h2 class="section-title">Our Specialities</h2>
+
+        <h3 style="text-align: center; padding: 40px;">Lower Back Pain</h3>
+        <div class="specialities-grid">
+
+            <div class="service-card">
+                <img src="sciatica_pain.jpg.avif" style=" width: 350px;"  alt=""> 
+                <a href="lowerBackPain.html#sciatica-treatment" style="text-decoration: none; color: black;"> <p style="text-align: center; padding: 10px; border: 1px solid black; margin: 3px; margin-top: 12px;">Sciatica Treatment</p> </a>
+            </div>
+
+            <div class="service-card">
+                <img src="msd.jpg.webp" style=" width: 350px;"  alt=""> 
+                <a href="lowerBackPain.html#musculoskeletal-disorder" style="text-decoration: none; color: black;"> <p style="text-align: center; padding: 10px; border: 1px solid black; margin: 3px; margin-top: 12px">Musculoskeletal Disorder</p></a> 
+            </div>
+
+            <div class="service-card">
+                 <img src="psr.jpg" style=" width: 350px;"  alt=""> 
+                 <a href="lowerBackPain.html#post-joint-rehabilitation" style="text-decoration: none; color: black;"> <p style="text-align: center; padding: 10px; border: 1px solid black; margin: 3px; margin-top: 12px">Post Joint Rehabilitation</p></a> 
+            </div>
+        </div>
+
+            <!-- Cervical Spondylosis -->
+            <h3 style="text-align: center; padding: 40px;">Cervical Spondylosis</h3>
+        <div class="specialities-grid">
+            <div class="service-card">
+                 <img src="Shoulder.png.webp" style=" width: 350px;"  alt=""> 
+                 <a href="Cervical.html#frozen-shoulder" style="text-decoration: none; color: black;"> <p style="text-align: center; padding: 10px; border: 1px solid black; margin: 3px; margin-top: 12px">Frozen Shoulder</p> </a> 
+            </div>
+
+            <div class="service-card">
+                 <img src="Arthritis.png" style=" width: 350px;"  alt="">  
+                 <a href="Cervical.html#arthritis-pain" style="text-decoration: none; color: black;"> <p style="text-align: center; padding: 10px; border: 1px solid black; margin: 3px; margin-top: 12px">Arthritis Pain</p></a>
+            </div>
+
+            <div class="service-card">
+                 <img src="dryNeedling.jpg" style=" width: 350px;"  alt="">
+                 <a href="Cervical.html#dry-needling" style="text-decoration: none; color: rgb(0, 0, 0);"> <p style="text-align: center; padding: 10px; border: 1px solid black; margin: 3px; margin-top: 12px">Dry Needling</p> </a> 
+            </div>
+
+        </div>
+
+            <!-- Sports Injuries -->
+             <h3 style="text-align: center; padding: 40px;">Sports Injuries</h3>
+        <div class="specialities-grid">
+            <div class="service-card">
+                 <img src="cupping.webp" style=" width: 350px;"  alt="">
+                <p style="text-align: center; padding: 10px; border: 1px solid black; margin: 3px; margin-top: 12px">Cupping</p>
+            </div>
+
+            <div class="service-card">
+                <img src="musclePain.jpg" style=" width: 350px;"  alt="">
+                <p style="text-align: center; padding: 10px; border: 1px solid black; margin: 3px; margin-top: 12px">Muscular Pain</p>
+            </div>
+
+            <div class="service-card">
+                <img src="ps.png" style=" width: 350px;"  alt="">
+                <p style="text-align: center; padding: 10px; border: 1px solid black; margin: 3px; margin-top: 12px">Post Surgical Rehab</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Services Videos -->
+     <!-- <section>
+        <div>
+            <video src=""></video>
+        </div>
+     </section> -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                
+                <h3 class="contact-heading"> <i class="fa-solid fa-location-dot " style="color: #ffae00;"></i> Location</h3>
+                <p class="contact-text">
+                    Building No.- 2039, Outram Lanes<br>
+                    Near GTB Nagar Metro Gate No.<br>
+                    Delhi
+                </p>
+                <h3 class="contact-heading"> <i class="fa-regular fa-address-card " style="color: #0062ff;"></i> Contact Details</h3>
+                <p class="contact-text">
+                    Phone: 7073061062<br>
+                    Email: sumitbhardwaj7869@gmail.com
+                </p>
+                <h3 class="contact-heading"> <i class="fa-regular fa-clock " style="color: #05a342;"></i> Hours</h3>
+                <p class="contact-text">
+                    Monday - Saturday: 9:00 AM - 8:00 PM<br>
+                    Sunday: By Appointment
+                </p>
+            </div>
+            <div class="contact-form">
+                <form action="https://api.web3forms.com/submit" method="POST" id="medical-form">
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="8065706b-7c08-442d-a599-7f2ac5c3f4c0">
+                    
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-input" name="name" required>
+                    </div>
+                    
+                    <!-- Phone Field -->
+                    <div class="form-group">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-input" name="phone" required>
+                    </div>
+                    
+                    <!-- Email Field (required for Web3Forms) -->
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" name="email" required>
+                    </div>
+                    
+                    <!-- Pain Types -->
+                    <div class="form-group">
+                        <label class="form-label">What type of pain are you experiencing?</label>
+                        <div class="checkbox-grid">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="backPain" name="pain_types[]" value="Back Pain" class="checkbox-input">
+                                <label for="backPain">Back Pain</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="neckPain" name="pain_types[]" value="Neck Pain" class="checkbox-input">
+                                <label for="neckPain">Neck Pain</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="jointPain" name="pain_types[]" value="Joint Pain" class="checkbox-input">
+                                <label for="jointPain">Joint Pain</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="shoulderPain" name="pain_types[]" value="Shoulder Pain" class="checkbox-input">
+                                <label for="shoulderPain">Shoulder Pain</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sportsInjury" name="pain_types[]" value="Sports Injury" class="checkbox-input">
+                                <label for="sportsInjury">Sports Injury</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="musclePain" name="pain_types[]" value="Muscle Pain" class="checkbox-input">
+                                <label for="musclePain">Muscle Pain</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="arthritis" name="pain_types[]" value="Arthritis" class="checkbox-input">
+                                <label for="arthritis">Arthritis</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other" name="pain_types[]" value="Other" class="checkbox-input">
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Condition Description -->
+                    <div class="form-group">
+                        <label class="form-label">Please describe your condition</label>
+                        <textarea class="form-textarea" name="condition_description" rows="4" placeholder="Please provide details about your pain, its duration, and any specific concerns..." required></textarea>
+                    </div>
+        
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        
+        </div>
+    </section>
+
+    <section>
+
+        <div class="reviews-container">
+            <h2 class="section-title">Reviews</h2>
+            <div class="review-card">
+              <div class="reviewer">
+                <div class="avatar">DS</div>
+                <div class="reviewer-info">
+                  <div class="reviewer-name">DEEPAK SHARMA</div>
+                  <div class="review-date">03 Oct</div>
+                  <div class="reviews-count">1 review</div>
+                </div>
+              </div>
+              <div class="review-text">
+                Dear Dr sumit Bhardwaj The personalized treatment plan was effective. I appreciated how they tailored exercises to my specific needs and adjusted them as I progressed.
+              </div>
+             
+            </div>
+        
+            <div class="review-card">
+              <div class="reviewer">
+                <div class="avatar" style="background-color: rgb(238, 201, 12);">A</div>
+                <div class="reviewer-info">
+                  <div class="reviewer-name">Aarti</div>
+                  <div class="review-date">10 Oct</div>
+                  <div class="reviews-count">12017 reviews</div>
+                </div>
+              </div>
+              <div class="review-text">
+                Good Service
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <h4 class="footer-heading">Dr. Sumit Bhardwaj (PT)</h4>
+                    <p class="footer-text">Professional Physiotherapy Services</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="dr.html">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="dr.html#specialities">Specialities</a></li>
+                        <li><a href="bookAppointment.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Specialised In</h4>
+                    <ul class="footer-list">
+                        <li>Arthritis Pain</li>
+                        <li>Cervical Spondylosis</li>
+                        <li>Lower Back Pain</li>
+                        <li>Neuro Rehabilitation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dr. Sumit Bhardwaj. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const menuButton = document.querySelector('.menu-button');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuButton.addEventListener('click', () => {
+            if (navLinks.style.display === 'none' || navLinks.style.display === '') {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '64px';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.backgroundColor = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.menu-button') && !event.target.closest('.nav-links')) {
+                navLinks.style.display = '';
+            }
+        });
+
+        // Close mobile menu when window is resized
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = '';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu after clicking a link
+                    if (window.innerWidth <= 768) {
+                        navLinks.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        document.getElementById('medical-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Gather all checked pain types
+            const painTypes = Array.from(document.querySelectorAll('input[name="pain_types[]"]:checked'))
+                .map(checkbox => checkbox.value);
+            
+            // Create FormData object
+            const formData = new FormData(e.target);
+            
+            // Add pain types as a comma-separated string
+            formData.set('pain_types', painTypes.join(', '));
+            
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('Thank you for your submission. We will contact you shortly.');
+                    e.target.reset();
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
